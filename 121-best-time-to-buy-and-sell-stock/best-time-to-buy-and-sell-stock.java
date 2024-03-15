@@ -1,21 +1,22 @@
 class Solution {
     public int maxProfit(int[] prices) {
-        int bestToBuy = Integer.MAX_VALUE;
-        int temporaryProfit = 0;
         int finalProfit = 0;
+        int left = 0;
+        int right = 1;
+        int profit;
 
-        for (int i = 0; i < prices.length; i++ ){
-            if (prices[i] < bestToBuy){
-                bestToBuy = prices[i];
+        while (right < prices.length) {
+            profit = prices[right] - prices[left];
+            if (profit < 0) {
+                left = right;
+                right++;
             }
-            temporaryProfit = prices[i] - bestToBuy;
-            if (temporaryProfit > finalProfit){
-                finalProfit = temporaryProfit;
+            if (profit >= 0) {
+                right += 1;
+                finalProfit = Math.max(profit, finalProfit);
             }
         }
 
-        return finalProfit; 
-
-
+        return finalProfit;
     }
 }
