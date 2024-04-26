@@ -5,7 +5,7 @@ class Solution:
         cur=[]
         def backtrack():
             if len(cur)==len(nums):
-                res.append(list(cur))
+                res.append(cur[:])
                 return
             for i in range(len(nums)):
                 if visited[i]:
