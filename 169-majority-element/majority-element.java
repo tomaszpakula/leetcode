@@ -1,20 +1,15 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        if (nums.length == 1) return nums[0];
-        int max = 0;
-        int maxCount = 0;
-        int tempCount = 0;
         HashMap<Integer, Integer> map = new HashMap<>();
-
+        int tempCount = 0;
         for(int num: nums){
             tempCount = map.getOrDefault(num,0)+1;
             map.put(num, tempCount);
-            if(tempCount > maxCount){
-                max = num;
-                maxCount = tempCount;
+
+            if(tempCount > nums.length/2){
+                return num;
             }
         }
-
-        return max;
+        return 0;
     }
 }
