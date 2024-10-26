@@ -3,13 +3,15 @@ class Solution {
         if (nums.length == 1) return nums[0];
         int max = 0;
         int maxCount = 0;
+        int tempCount = 0;
         HashMap<Integer, Integer> map = new HashMap<>();
 
         for(int num: nums){
-            map.put(num, map.getOrDefault(num,0)+1);
-            if(map.get(num) > maxCount){
+            tempCount = map.getOrDefault(num,0)+1;
+            map.put(num, tempCount);
+            if(tempCount > maxCount){
                 max = num;
-                maxCount = map.get(num);
+                maxCount = tempCount;
             }
         }
 
