@@ -1,31 +1,23 @@
 class Solution {
     public int jump(int[] nums) {
-        if (nums.length == 1){
-            return 0;
-        }
+       if (nums.length == 1) return 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(0, nums.length-1);
+        int n = nums.length - 2;
+        int key;
+        int tempDist = 0;
 
-        int goal = nums.length - 1;
-        int steps = 0;
-        int i = 0;
-
-        while (i < nums.length){
-            if (i + nums[i] >= goal){
-                steps += 1;
-                goal = i;
-                if (i!=0){
-                    i=0;
-                }
-                else{
+        while(n>=0){
+            for(Map.Entry<Integer, Integer> dist: map.entrySet()){
+                key= dist.getKey();
+                if(map.get(key)-n <= nums[n]){
+                    map.put(key+1, n);
+                    tempDist=key+1;
                     break;
-                };
+                }
             }
-            else{
-                i++;
-            }
-
+            n--;
         }
-
-        return steps;
-
+        return tempDist;
     }
 }
