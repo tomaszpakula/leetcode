@@ -1,13 +1,20 @@
 class Solution {
     public boolean canJump(int[] nums) {
-        int n = nums.length;
-        int end = n - 1;
+        if(nums.length == 1) return true;
+        int minDistance = 1;
+        int index = nums.length - 2;
 
-        for (int i = n - 2; i >= 0; i--){
-            if (i + nums[i] >= end){
-                end = i;
+        while(index != 0){
+            if(nums[index]>=minDistance){
+                minDistance = 1;
             }
+            else{
+                minDistance += 1;
+            }
+
+            index--;
         }
-        return end == 0;
+
+        return minDistance<=nums[0];
     }
 }
