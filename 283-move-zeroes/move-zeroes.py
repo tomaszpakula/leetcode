@@ -1,10 +1,14 @@
 class Solution(object):
     def moveZeroes(self, nums):
-        not_zeros = list(filter(lambda n: n!=0,nums))
-        for i in range(len(nums)):
-            if i < len(not_zeros):
-                nums[i] = not_zeros[i]
-            else:
-                nums[i]=0
+        j = 0
+        k = 0
+
+        while(j<len(nums) and k<len(nums)):
+            if nums[j] != 0:
+                nums[j],nums[k] = nums[k],nums[j]
+                k+=1
+            j+=1
+
+
         return nums
         
