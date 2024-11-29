@@ -1,14 +1,14 @@
 class Solution {
     public boolean isMonotonic(int[] nums) {
-        String type = "undefined" ;
+        int type = 0 ;
         for(int i = 1; i<nums.length; i++){
-            if(type == "undefined" && nums[i-1]>nums[i]){
-                type = "decreasing";
+            if(type == 0 && nums[i-1]>nums[i]){
+                type = -1;
             }
-            else if(type == "undefined" && nums[i-1] < nums[i]){
-                type = "increasing";
+            else if(type == 0 && nums[i-1] < nums[i]){
+                type = 1;
             }
-            else if( (type == "increasing" && nums[i-1]>nums[i]) || (type == "decreasing" && nums[i-1]<nums[i]) ){
+            else if( (type == 1 && nums[i-1]>nums[i]) || (type == -1 && nums[i-1]<nums[i]) ){
                 return false;
             }
         }
