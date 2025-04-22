@@ -6,10 +6,7 @@ class Solution:
             return mid if nums[mid] == target else -1
         elif nums[mid] == target:
             return mid
-        elif nums[start] == target:
-            return start
-        elif nums[end] == target:
-            return end
+      
      
 
         if nums[start] <= nums[mid]:
