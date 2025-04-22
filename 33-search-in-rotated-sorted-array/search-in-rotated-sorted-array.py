@@ -14,17 +14,11 @@ class Solution:
             return -1
 
         if nums[start] <= nums[mid]:
-            if nums[start] < target:
-                if nums[mid] > target:
-                    return self.binary_search(nums, target, start, mid-1)
-                else:
-                    return self.binary_search(nums, target, mid+1, end)
+            if nums[start] <= target <= nums[mid]:
+                return self.binary_search(nums, target, start, mid-1)
             else:
-                if nums[mid] > target:
-                    return self.binary_search(nums, target, mid+1, end)
-                else:
-                    return self.binary_search(nums, target, start, mid-1)
-
+                return self.binary_search(nums, target, mid+1, end)
+               
         else:
             if nums[start] < target:
                 return self.binary_search(nums, target, start, mid-1)
