@@ -10,8 +10,7 @@ class Solution:
             return start
         elif nums[end] == target:
             return end
-        elif mid < start or mid > end:
-            return -1
+     
 
         if nums[start] <= nums[mid]:
             if nums[start] <= target <= nums[mid]:
