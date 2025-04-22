@@ -20,13 +20,10 @@ class Solution:
                 return self.binary_search(nums, target, mid+1, end)
                
         else:
-            if nums[start] < target:
-                return self.binary_search(nums, target, start, mid-1)
+            if nums[mid] <= target <= nums[end]:
+                return self.binary_search(nums, target, mid+1, end)
             else:
-                if nums[mid] < target:
-                    return self.binary_search(nums, target, mid+1, end)
-                else:
-                    return self.binary_search(nums, target, start, mid-1)
+                return self.binary_search(nums, target, start, mid-1)
                     
 
             
