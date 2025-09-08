@@ -1,9 +1,9 @@
 class Solution(object):
     def twoSum(self, nums, target):
-        map = {} 
+        dic = {}
         for i, num in enumerate(nums):
-            dif = target - num
-            if dif in map:
-                return [map[dif],i]
-            else:
-                map[num] = i
+            to_search = target - num
+            if to_search in dic:
+                return [i, dic[to_search]]
+            dic[num] = i
+        
