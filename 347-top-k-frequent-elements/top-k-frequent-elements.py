@@ -1,20 +1,18 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        dictionary = {}
-        #O(n)
+        counter = {}
         for num in nums:
-            if num not in dictionary:
-                dictionary[num] = 1
-            else:
-                dictionary[num] += 1
-       
-        freq = [ [] for _ in range(len(nums)+1) ]
-        for key, value in dictionary.items():
-            freq[value].append(key)
+            counter[num] = counter.get(num, 0) + 1
+
+        frequency = [[] for _ in range(len(nums) + 1)]
+
+        for key in counter:
+            frequency[counter[key]].append(key)
 
         res = []
-        for i in range(len(freq) - 1, 0 , -1):
-            for n in freq[i]:
-                res.append(n)
+
+        for i in range(len(frequency) - 1, 0, -1):
+            res += frequency[i]
             if len(res) == k:
                 return res
+        
